@@ -202,14 +202,29 @@ In Agent Builder, add the GenAI Function to a topic. Set the `Payload` input var
 
 ## Deployment
 
-```bash
-# Deploy all metadata
-sf project deploy start --source-dir force-app --target-org <your-alias>
+Clone the repo, then run one command to deploy everything:
 
-# Assign permission sets to your agent user
+```bash
+git clone https://github.com/achalon-salesforce/agentforce-lwc-output-patterns.git
+cd agentforce-lwc-output-patterns
+
+# Deploy all components via the manifest
+sf project deploy start --manifest manifest/package.xml --target-org <your-alias>
+```
+
+Then assign the permission sets to your agent user:
+
+```bash
+# Appointment Calendar Picker
+sf org assign permset --name ApptCalendarPickerAccess \
+  --on-behalf-of <agent-username> --target-org <your-alias>
+
+# Favorite Team Card
 sf org assign permset --name FavoriteTeamAccess \
   --on-behalf-of <agent-username> --target-org <your-alias>
 ```
+
+That's it — all Apex classes, Flows, GenAI Functions, Lightning Types, and LWCs are installed and ready to wire into an agent.
 
 ---
 
