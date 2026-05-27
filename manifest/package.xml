@@ -8,12 +8,12 @@
         <name>ApexClass</name>
     </types>
     <types>
-        <members>apptPicker_aae3fa_Output</members>
+        <members>apptCalendarPicker_0208ca_Output</members>
         <members>SaveFavoriteTeamOutput</members>
         <name>Flow</name>
     </types>
     <types>
-        <members>apptPicker_aae3fa_Output</members>
+        <members>apptCalendarPicker_0208ca_Output</members>
         <members>SaveFavoriteTeamOutput</members>
         <name>GenAiFunction</name>
     </types>

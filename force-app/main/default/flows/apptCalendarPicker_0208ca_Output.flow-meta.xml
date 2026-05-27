@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <areMetricsLoggedToDataCloud>false</areMetricsLoggedToDataCloud>
+    <assignments>
+        <name>Assign_Details_To_Options</name>
+        <label>Assign Details To Options</label>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <assignmentItems>
+            <assignToReference>Options.apptCalendarPicker_0208caJSON</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Details</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <description>Use this to present a calendar-based appointment booking interface for the user to select a date and time slot.</description>
+    <environments>Default</environments>
+    <interviewLabel>Appointment Calendar Picker {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Appointment Calendar Picker</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Details_To_Options</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <variables>
+        <description>This is the full detail to send over and format in this way: 
+
+{&quot;title&quot;:&quot;Book an Appointment&quot;,&quot;subtitle&quot;:&quot;Choose a date and time that works for you.&quot;,&quot;confirmLabel&quot;:&quot;Confirm Booking&quot;,&quot;availableDates&quot;:[{&quot;date&quot;:&quot;2026-05-27&quot;,&quot;slots&quot;:[&quot;9:00 AM&quot;,&quot;10:00 AM&quot;,&quot;11:30 AM&quot;,&quot;2:00 PM&quot;,&quot;3:30 PM&quot;]},{&quot;date&quot;:&quot;2026-05-28&quot;,&quot;slots&quot;:[&quot;8:30 AM&quot;,&quot;10:30 AM&quot;,&quot;1:00 PM&quot;,&quot;4:00 PM&quot;]},{&quot;date&quot;:&quot;2026-05-29&quot;,&quot;slots&quot;:[&quot;9:00 AM&quot;,&quot;11:00 AM&quot;,&quot;2:30 PM&quot;]},{&quot;date&quot;:&quot;2026-05-31&quot;,&quot;slots&quot;:[&quot;10:00 AM&quot;,&quot;12:00 PM&quot;,&quot;3:00 PM&quot;,&quot;4:30 PM&quot;]},{&quot;date&quot;:&quot;2026-06-01&quot;,&quot;slots&quot;:[&quot;9:30 AM&quot;,&quot;11:30 AM&quot;,&quot;1:30 PM&quot;]},{&quot;date&quot;:&quot;2026-06-02&quot;,&quot;slots&quot;:[&quot;8:00 AM&quot;,&quot;10:00 AM&quot;,&quot;2:00 PM&quot;,&quot;3:30 PM&quot;,&quot;5:00 PM&quot;]}]}
+
+Rules: &apos;title&apos; is the heading shown at the top of the calendar (string, required). &apos;subtitle&apos; is a short descriptive line below the title (string, required). &apos;confirmLabel&apos; is the text on the confirmation button (string, required). &apos;availableDates&apos; is an array of objects each with a &apos;date&apos; field in YYYY-MM-DD format and a &apos;slots&apos; array of time strings in 12-hour format (e.g. &apos;9:00 AM&apos;). Only dates listed in availableDates will appear as selectable on the calendar. Provide at least one date with at least one slot. Do not wrap the payload in a &apos;value&apos; key.</description>
+        <name>Details</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Show to the user</description>
+        <name>Options</name>
+        <apexClass>ApptCalendarPicker_0208caData</apexClass>
+        <dataType>Apex</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

@@ -1,0 +1,14 @@
+{
+  "required" : [ "Details" ],
+  "unevaluatedProperties" : false,
+  "properties" : {
+    "Details" : {
+      "title" : "Details",
+      "description" : "This is the full detail to send over and format in this way: \n\n{\"title\":\"Book an Appointment\",\"subtitle\":\"Choose a date and time that works for you.\",\"confirmLabel\":\"Confirm Booking\",\"availableDates\":[{\"date\":\"2026-05-27\",\"slots\":[\"9:00 AM\",\"10:00 AM\",\"11:30 AM\",\"2:00 PM\",\"3:30 PM\"]},{\"date\":\"2026-05-28\",\"slots\":[\"8:30 AM\",\"10:30 AM\",\"1:00 PM\",\"4:00 PM\"]},{\"date\":\"2026-05-29\",\"slots\":[\"9:00 AM\",\"11:00 AM\",\"2:30 PM\"]},{\"date\":\"2026-05-31\",\"slots\":[\"10:00 AM\",\"12:00 PM\",\"3:00 PM\",\"4:30 PM\"]},{\"date\":\"2026-06-01\",\"slots\":[\"9:30 AM\",\"11:30 AM\",\"1:30 PM\"]},{\"date\":\"2026-06-02\",\"slots\":[\"8:00 AM\",\"10:00 AM\",\"2:00 PM\",\"3:30 PM\",\"5:00 PM\"]}]}\n\nRules: 'title' is the heading shown at the top of the calendar (string, required). 'subtitle' is a short descriptive line below the title (string, required). 'confirmLabel' is the text on the confirmation button (string, required). 'availableDates' is an array of objects each with a 'date' field in YYYY-MM-DD format and a 'slots' array of time strings in 12-hour format (e.g. '9:00 AM'). Only dates listed in availableDates will appear as selectable on the calendar. Provide at least one date with at least one slot. Do not wrap the payload in a 'value' key.",
+      "lightning:type" : "lightning__textType",
+      "lightning:isPII" : false,
+      "copilotAction:isUserInput" : false
+    }
+  },
+  "lightning:type" : "lightning__objectType"
+}
