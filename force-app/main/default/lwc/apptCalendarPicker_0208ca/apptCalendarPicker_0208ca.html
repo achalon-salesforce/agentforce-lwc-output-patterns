@@ -1,0 +1,91 @@
+<template>
+  <div class="appt-container">
+    <!-- Header -->
+    <div class="appt-header">
+      <div class="header-text">
+        <h2 class="appt-title">{value.title}</h2>
+        <p class="appt-subtitle">{value.subtitle}</p>
+      </div>
+    </div>
+
+    <!-- Calendar Navigation -->
+    <div class="calendar-card">
+      <div class="cal-nav">
+        <button class="nav-btn" onclick={handlePrevMonth} aria-label="Previous month">
+          <svg viewBox="0 0 24 24" class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="15 18 9 12 15 6"/>
+          </svg>
+        </button>
+        <span class="cal-month-label">{currentMonthLabel}</span>
+        <button class="nav-btn" onclick={handleNextMonth} aria-label="Next month">
+          <svg viewBox="0 0 24 24" class="nav-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Day-of-week headers -->
+      <div class="cal-grid">
+        <template for:each={weekDayLabels} for:item="wd">
+          <div key={wd} class="cal-weekday">{wd}</div>
+        </template>
+
+        <!-- Calendar day cells -->
+        <template for:each={calendarDays} for:item="day">
+          <div
+            key={day.key}
+            class={day.cellClass}
+            data-date={day.dateISO}
+            onclick={handleDateClick}
+          >
+            <span class="day-num">{day.dateNum}</span>
+            <template lwc:if={day.hasSlots}>
+              <span class="avail-dot"></span>
+            </template>
+          </div>
+        </template>
+      </div>
+    </div>
+
+    <!-- Time Slots -->
+    <div class="time-section">
+      <template lwc:if={selectedDateLabel}>
+        <p class="time-section-label">Available times for <strong>{selectedDateLabel}</strong></p>
+        <div class="time-grid">
+          <template for:each={slotsForSelectedDate} for:item="slot">
+            <button
+              key={slot.time}
+              class={slot.slotClass}
+              data-time={slot.time}
+              onclick={handleTimeClick}
+            >
+              {slot.time}
+            </button>
+          </template>
+        </div>
+        <template lwc:if={noSlotsMessage}>
+          <p class="no-slots-msg">{noSlotsMessage}</p>
+        </template>
+      </template>
+      <template lwc:else>
+        <p class="time-placeholder">Select a highlighted date to see available times.</p>
+      </template>
+    </div>
+
+    <!-- Confirm Button -->
+    <template lwc:if={selectedTime}>
+      <div class="confirm-section">
+        <div class="selection-summary">
+          <svg viewBox="0 0 24 24" class="check-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <span class="summary-text">{selectedDateLabel} &mdash; {selectedTime}</span>
+        </div>
+        <button class="confirm-btn" onclick={handleConfirm}>
+          {value.confirmLabel}
+        </button>
+      </div>
+    </template>
+  </div>
+</template>

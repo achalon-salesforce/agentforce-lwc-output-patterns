@@ -1,0 +1,5 @@
+{
+  "title" : "Appointment Calendar Picker",
+  "description" : "A calendar-based appointment booking component that receives all configuration — title, subtitle, available dates, time slots, and confirm label — through a single @api value property.",
+  "lightning:type" : "@apexClassType/c__ApptCalendarPicker_0208caData"
+}

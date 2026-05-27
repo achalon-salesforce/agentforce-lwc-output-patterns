@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Appointment Calendar Picker</masterLabel>
+    <description>A calendar-based appointment booking component that receives all configuration — title, subtitle, available dates, time slots, and confirm label — through a single @api value property.</description>
+    <targets>
+        <target>lightning__AgentforceOutput</target>
+        <target>lightning__AgentforceInput</target>
+        <target>lightningSnapin__ChatMessage</target>
+    </targets>
+</LightningComponentBundle>

@@ -1,5 +1,0 @@
-{
-  "title": "Favorite Team",
-  "description": "User's favorite sports team",
-  "lightning:type": "@apexClassType/c__FavoriteTeam"
-}

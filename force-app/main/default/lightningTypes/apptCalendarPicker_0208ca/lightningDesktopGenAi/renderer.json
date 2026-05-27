@@ -1,0 +1,9 @@
+{
+  "renderer" : {
+    "componentOverrides" : {
+      "$" : {
+        "definition" : "c/apptCalendarPicker_0208ca"
+      }
+    }
+  }
+}

@@ -1,9 +1,0 @@
-{
-  "editor": {
-    "componentOverrides": {
-      "$": {
-        "definition": "c/favoriteTeamInput"
-      }
-    }
-  }
-}
