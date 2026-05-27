@@ -3,20 +3,17 @@
     <types>
         <members>ApptCalendarPicker_0208caData</members>
         <members>ApptCalendarPicker_0208caDataTest</members>
-        <members>FavoriteTeam</members>
         <members>FavoriteTeamAgent</members>
         <members>FavoriteTeamOutputData</members>
         <name>ApexClass</name>
     </types>
     <types>
         <members>apptPicker_aae3fa_Output</members>
-        <members>SaveFavoriteTeam</members>
         <members>SaveFavoriteTeamOutput</members>
         <name>Flow</name>
     </types>
     <types>
         <members>apptPicker_aae3fa_Output</members>
-        <members>SaveFavoriteTeam</members>
         <members>SaveFavoriteTeamOutput</members>
         <name>GenAiFunction</name>
     </types>
