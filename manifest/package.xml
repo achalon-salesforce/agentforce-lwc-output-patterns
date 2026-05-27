@@ -9,11 +9,13 @@
         <name>ApexClass</name>
     </types>
     <types>
+        <members>apptPicker_aae3fa_Output</members>
         <members>SaveFavoriteTeam</members>
         <members>SaveFavoriteTeamOutput</members>
         <name>Flow</name>
     </types>
     <types>
+        <members>apptPicker_aae3fa_Output</members>
         <members>SaveFavoriteTeam</members>
         <members>SaveFavoriteTeamOutput</members>
         <name>GenAiFunction</name>
