@@ -13,8 +13,10 @@ A full calendar interface that the agent renders when a user needs to book an ap
 **Files:**
 - `lwc/apptCalendarPicker_0208ca` — calendar UI with date navigation, time slot grid, and confirm button
 - `lightningTypes/apptCalendarPicker_0208ca` — Custom Lightning Type backed by `ApptCalendarPicker_0208caData`
-- `genAiFunctions/apptPicker_aae3fa_Output` — GenAI Function wired to a Flow
-- `flows/apptPicker_aae3fa_Output` — AutoLaunched Flow that receives an LLM-generated JSON payload and assigns it to the output CLT
+- `genAiFunctions/apptCalendarPicker_0208ca_Output` — GenAI Function wired to a Flow
+- `flows/apptCalendarPicker_0208ca_Output` — AutoLaunched Flow that receives an LLM-generated JSON payload and assigns it to the output CLT
+- `classes/ApptCalendarPicker_0208caData` — Apex data class that holds the JSON payload
+- `permissionsets/ApptCalendarPickerAccess` — grants agent user access to the Apex class
 
 ### 2. Favorite Sports Team Card
 
@@ -25,7 +27,9 @@ A branded card the agent renders once it knows the user's favorite team. Display
 - `lightningTypes/favoriteTeamOutput` — Custom Lightning Type backed by `FavoriteTeamOutputData`
 - `genAiFunctions/SaveFavoriteTeamOutput` — GenAI Function wired to a Flow
 - `flows/SaveFavoriteTeamOutput` — AutoLaunched Flow that receives JSON and assigns it to the output CLT
+- `classes/FavoriteTeamOutputData` — Apex data class that holds the JSON payload
 - `classes/FavoriteTeamAgent` — `@InvocableMethod` that updates `User.AboutMe` when called by the agent
+- `permissionsets/FavoriteTeamAccess` — grants agent user access to the Apex classes
 
 ---
 
@@ -232,17 +236,21 @@ That's it — all Apex classes, Flows, GenAI Functions, Lightning Types, and LWC
 
 | File | Purpose |
 |------|---------|
-| `lwc/favoriteTeamOutput` | Sports team output card |
-| `lwc/apptCalendarPicker_0208ca` | Calendar date/time picker |
-| `lightningTypes/favoriteTeamOutput` | CLT schema + renderer for team card |
+| `lwc/apptCalendarPicker_0208ca` | Calendar date/time picker LWC |
+| `lwc/favoriteTeamOutput` | Sports team output card LWC |
 | `lightningTypes/apptCalendarPicker_0208ca` | CLT schema + renderer for calendar |
+| `lightningTypes/favoriteTeamOutput` | CLT schema + renderer for team card |
+| `flows/apptCalendarPicker_0208ca_Output` | Flow wiring for calendar |
 | `flows/SaveFavoriteTeamOutput` | Flow wiring for team card |
-| `flows/apptPicker_aae3fa_Output` | Flow wiring for calendar |
+| `genAiFunctions/apptCalendarPicker_0208ca_Output` | GenAI Function for calendar |
 | `genAiFunctions/SaveFavoriteTeamOutput` | GenAI Function for team card |
-| `genAiFunctions/apptPicker_aae3fa_Output` | GenAI Function for calendar |
-| `classes/FavoriteTeamAgent` | Invocable that updates `User.AboutMe` |
 | `classes/ApptCalendarPicker_0208caData` | Apex data class for calendar CLT |
+| `classes/ApptCalendarPicker_0208caDataTest` | Test class for calendar data class |
 | `classes/FavoriteTeamOutputData` | Apex data class for team card CLT |
+| `classes/FavoriteTeamAgent` | Invocable that updates `User.AboutMe` |
+| `permissionsets/ApptCalendarPickerAccess` | Grants agent user access to calendar Apex |
+| `permissionsets/FavoriteTeamAccess` | Grants agent user access to team Apex |
+| `manifest/package.xml` | Deploy everything in one command |
 
 ---
 
