@@ -1,0 +1,16 @@
+{
+  "required": [
+    "Payload"
+  ],
+  "unevaluatedProperties": false,
+  "properties": {
+    "Payload": {
+      "title": "Payload",
+      "description": "JSON payload describing the team to display. Format it exactly as: {\"title\":\"Your Favorite Team\",\"subtitle\":\"Here is what we have on file.\",\"teamName\":\"<the team name>\",\"message\":\"Customer's favorite sports team is <the team name>\"}",
+      "lightning:type": "lightning__textType",
+      "lightning:isPII": false,
+      "copilotAction:isUserInput": false
+    }
+  },
+  "lightning:type": "lightning__objectType"
+}

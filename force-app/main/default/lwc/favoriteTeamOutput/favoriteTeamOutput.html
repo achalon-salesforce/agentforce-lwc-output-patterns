@@ -1,0 +1,31 @@
+<template>
+  <div class="team-container">
+    <div class="team-header">
+      <h2 class="team-title">{data.title}</h2>
+      <p class="team-subtitle">{data.subtitle}</p>
+    </div>
+    <div class="team-card">
+      <div class="team-badge">
+        <svg viewBox="0 0 24 24" class="trophy-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"/>
+          <path d="M6 18H4a2 2 0 0 1-2-2v-1a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v1a2 2 0 0 1-2 2h-2"/>
+          <rect x="6" y="18" width="12" height="4"/>
+        </svg>
+        <span class="team-name">{data.teamName}</span>
+      </div>
+      <p class="team-message">{data.message}</p>
+      <template lwc:if={saved}>
+        <div class="selection-summary">
+          <svg viewBox="0 0 24 24" class="check-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="9 12 11 14 15 10"/>
+          </svg>
+          <span class="saved-text">Saved to your profile!</span>
+        </div>
+      </template>
+      <template lwc:else>
+        <button class="confirm-btn" onclick={handleSaveToProfile}>Save to My Profile</button>
+      </template>
+    </div>
+  </div>
+</template>

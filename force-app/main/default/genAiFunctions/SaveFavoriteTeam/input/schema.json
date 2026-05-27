@@ -1,0 +1,16 @@
+{
+  "required": [
+    "filters"
+  ],
+  "unevaluatedProperties": false,
+  "properties": {
+    "filters": {
+      "title": "Team Filters",
+      "description": "The user's favorite sports team selection.",
+      "lightning:type": "c__favoriteTeam",
+      "lightning:isPII": false,
+      "copilotAction:isUserInput": true
+    }
+  },
+  "lightning:type": "lightning__objectType"
+}

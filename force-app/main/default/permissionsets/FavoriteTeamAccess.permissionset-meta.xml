@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>Favorite Team Access</label>
+    <description>Grants access to FavoriteTeam and FavoriteTeamAgent Apex classes</description>
+    <classAccesses>
+        <apexClass>FavoriteTeam</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>FavoriteTeamAgent</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <hasActivationRequired>false</hasActivationRequired>
+</PermissionSet>

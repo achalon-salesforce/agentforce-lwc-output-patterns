@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <description>Displays the user's favorite sports team as a custom LWC output card.</description>
+    <environments>Default</environments>
+    <interviewLabel>Save Favorite Team Output {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Save Favorite Team Output</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Assign_Payload_To_Output</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <assignments>
+        <name>Assign_Payload_To_Output</name>
+        <label>Assign Payload To Output</label>
+        <locationX>0</locationX>
+        <locationY>100</locationY>
+        <assignmentItems>
+            <assignToReference>TeamOutput.favoriteTeamOutputJSON</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>Payload</elementReference>
+            </value>
+        </assignmentItems>
+    </assignments>
+    <variables>
+        <description>JSON payload describing the team to display. Format: {"title":"Your Favorite Team","subtitle":"Here is what we have on file.","teamName":"Golden State Warriors","message":"Customer&apos;s favorite sports team is Golden State Warriors"}</description>
+        <name>Payload</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Show to the user.</description>
+        <name>TeamOutput</name>
+        <apexClass>FavoriteTeamOutputData</apexClass>
+        <dataType>Apex</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

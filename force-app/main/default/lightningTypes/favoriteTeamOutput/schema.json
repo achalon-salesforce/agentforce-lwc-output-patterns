@@ -1,0 +1,5 @@
+{
+  "title": "Favorite Team Output",
+  "description": "Displays the user's confirmed favorite sports team",
+  "lightning:type": "@apexClassType/c__FavoriteTeamOutputData"
+}

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>65.0</apiVersion>
+    <description>Saves the user's favorite sports team to their profile.</description>
+    <environments>Default</environments>
+    <interviewLabel>Save Favorite Team {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Save Favorite Team</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>0</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Save_Favorite_Team</targetReference>
+        </connector>
+    </start>
+    <status>Active</status>
+    <actionCalls>
+        <name>Save_Favorite_Team</name>
+        <label>Save Favorite Team</label>
+        <locationX>0</locationX>
+        <locationY>100</locationY>
+        <actionName>FavoriteTeamAgent</actionName>
+        <actionType>apex</actionType>
+        <inputParameters>
+            <name>filters</name>
+            <value>
+                <elementReference>filters</elementReference>
+            </value>
+        </inputParameters>
+        <outputParameters>
+            <assignToReference>message</assignToReference>
+            <name>message</name>
+        </outputParameters>
+    </actionCalls>
+    <variables>
+        <description>The user's favorite sports team selection.</description>
+        <name>filters</name>
+        <apexClass>FavoriteTeam</apexClass>
+        <dataType>Apex</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <description>Confirmation message to display to the user.</description>
+        <name>message</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>

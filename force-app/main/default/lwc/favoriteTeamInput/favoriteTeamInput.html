@@ -1,0 +1,48 @@
+<template>
+  <div class="team-container">
+    <div class="team-header">
+      <h2 class="team-title">Your Favorite Sports Team</h2>
+      <p class="team-subtitle">Tell us who you're rooting for.</p>
+    </div>
+
+    <div class="input-card">
+      <lightning-input
+        label="Team name"
+        name="teamName"
+        value={teamName}
+        type="text"
+        placeholder="e.g. Golden State Warriors"
+        onchange={handleInputChange}
+        read-only={readOnly}>
+      </lightning-input>
+    </div>
+
+    <template lwc:if={hasTeamName}>
+      <div class="confirm-section">
+        <template lwc:if={saved}>
+          <div class="selection-summary">
+            <svg viewBox="0 0 24 24" class="check-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+            <span class="summary-text">Saved to your profile!</span>
+          </div>
+        </template>
+        <template lwc:else>
+          <div class="selection-summary">
+            <svg viewBox="0 0 24 24" class="check-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+            <span class="summary-text">{teamName}</span>
+          </div>
+          <button class="confirm-btn" onclick={handleSaveToProfile} disabled={saving}>
+            <template lwc:if={saving}>Saving...</template>
+            <template lwc:else>Save to My Profile</template>
+          </button>
+          <button class="confirm-btn secondary-btn" onclick={handleConfirm}>Submit to Agent</button>
+        </template>
+      </div>
+    </template>
+  </div>
+</template>
