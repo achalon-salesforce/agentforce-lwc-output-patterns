@@ -3,6 +3,7 @@
     <types>
         <members>ApptCalendarPicker_0208caData</members>
         <members>ApptCalendarPicker_0208caDataTest</members>
+        <members>ApptCalendarPicker_0208caProvider</members>
         <members>FavoriteTeamAgent</members>
         <members>FavoriteTeamOutputData</members>
         <name>ApexClass</name>
@@ -14,6 +15,7 @@
     </types>
     <types>
         <members>apptCalendarPicker_0208ca_Output</members>
+        <members>apptCalendarPicker_0208ca_OutputFromApex</members>
         <members>SaveFavoriteTeamOutput</members>
         <name>GenAiFunction</name>
     </types>

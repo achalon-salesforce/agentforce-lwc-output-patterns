@@ -1,0 +1,20 @@
+{
+  "unevaluatedProperties": false,
+  "properties": {
+    "title": {
+      "title": "Title",
+      "description": "Optional heading shown at the top of the calendar.",
+      "lightning:type": "lightning__textType",
+      "lightning:isPII": false,
+      "copilotAction:isUserInput": false
+    },
+    "subtitle": {
+      "title": "Subtitle",
+      "description": "Optional descriptive line shown below the title.",
+      "lightning:type": "lightning__textType",
+      "lightning:isPII": false,
+      "copilotAction:isUserInput": false
+    }
+  },
+  "lightning:type": "lightning__objectType"
+}

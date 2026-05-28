@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
     <label>Appt Calendar Picker Access</label>
-    <description>Grants access to ApptCalendarPicker_0208caData Apex class</description>
+    <description>Grants access to the appointment calendar picker Apex classes</description>
     <classAccesses>
         <apexClass>ApptCalendarPicker_0208caData</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>ApptCalendarPicker_0208caProvider</apexClass>
         <enabled>true</enabled>
     </classAccesses>
     <hasActivationRequired>false</hasActivationRequired>

@@ -1,0 +1,15 @@
+{
+  "unevaluatedProperties": false,
+  "properties": {
+    "options": {
+      "title": "Options",
+      "description": "Calendar availability data rendered as a custom LWC.",
+      "lightning:type": "c__apptCalendarPicker_0208ca",
+      "lightning:isPII": false,
+      "copilotAction:isDisplayable": true,
+      "copilotAction:isUsedByPlanner": true,
+      "copilotAction:useHydratedPrompt": false
+    }
+  },
+  "lightning:type": "lightning__objectType"
+}
