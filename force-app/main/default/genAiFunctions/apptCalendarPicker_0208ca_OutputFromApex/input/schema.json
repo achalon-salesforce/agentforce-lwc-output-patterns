@@ -1,16 +1,16 @@
 {
   "unevaluatedProperties": false,
   "properties": {
-    "title": {
-      "title": "Title",
-      "description": "Optional heading shown at the top of the calendar.",
+    "contactId": {
+      "title": "Contact ID",
+      "description": "ID of the Contact requesting the appointment. Personalizes the calendar greeting.",
       "lightning:type": "lightning__textType",
       "lightning:isPII": false,
       "copilotAction:isUserInput": false
     },
-    "subtitle": {
-      "title": "Subtitle",
-      "description": "Optional descriptive line shown below the title.",
+    "appointmentTypeId": {
+      "title": "Appointment Type ID",
+      "description": "ID of the appointment type. Drives which time slots are available.",
       "lightning:type": "lightning__textType",
       "lightning:isPII": false,
       "copilotAction:isUserInput": false

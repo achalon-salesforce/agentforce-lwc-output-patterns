@@ -31,36 +31,61 @@ global inherited sharing class ApptCalendarPicker_0208caProvider {
 
     /**
      * Build the JSON payload the LWC expects.
-     * Replace this with a SOQL query or external service call.
+     * Demo: contactId personalizes the title, appointmentTypeId varies the slots.
+     * Replace this body with a SOQL query or external service call.
      */
     private static String buildAvailabilityPayload(Request req) {
-        Date startDate = req.startDate != null ? req.startDate : Date.today();
+        Date startDate = Date.today();
+
+        // Personalize the title using contactId — looks up the contact's name.
+        String greeting = 'Book an Appointment';
+        if (req.contactId != null) {
+            List<Contact> contacts = [
+                SELECT FirstName FROM Contact WHERE Id = :req.contactId LIMIT 1
+            ];
+            if (!contacts.isEmpty() && String.isNotBlank(contacts[0].FirstName)) {
+                greeting = 'Book an Appointment, ' + contacts[0].FirstName;
+            }
+        }
+
+        // Vary slots by appointmentTypeId so different types produce different availability.
+        // Replace with real availability lookup driven by the type's duration/provider rules.
+        List<Object> availableDates = slotsForType(req.appointmentTypeId, startDate);
 
         Map<String, Object> payload = new Map<String, Object>{
-            'title' => String.isNotBlank(req.title) ? req.title : 'Book an Appointment',
-            'subtitle' => String.isNotBlank(req.subtitle) ? req.subtitle : 'Choose a date and time that works for you.',
+            'title' => greeting,
+            'subtitle' => 'Appointment type: ' + (req.appointmentTypeId != null ? String.valueOf(req.appointmentTypeId) : '(none)'),
             'confirmLabel' => 'Confirm Booking',
-            'availableDates' => new List<Map<String, Object>>{
-                new Map<String, Object>{
-                    'date' => formatDate(startDate.addDays(1)),
-                    'slots' => new List<String>{ '9:00 AM', '10:30 AM', '2:00 PM', '3:30 PM' }
-                },
-                new Map<String, Object>{
-                    'date' => formatDate(startDate.addDays(2)),
-                    'slots' => new List<String>{ '8:30 AM', '11:00 AM', '1:00 PM' }
-                },
-                new Map<String, Object>{
-                    'date' => formatDate(startDate.addDays(3)),
-                    'slots' => new List<String>{ '10:00 AM', '12:00 PM', '4:00 PM' }
-                },
-                new Map<String, Object>{
-                    'date' => formatDate(startDate.addDays(5)),
-                    'slots' => new List<String>{ '9:30 AM', '2:30 PM' }
-                }
-            }
+            'availableDates' => availableDates
         };
 
         return JSON.serialize(payload);
+    }
+
+    /**
+     * Demo slot generator — different appointment types get different patterns.
+     * Replace with your scheduling query / external service call.
+     */
+    private static List<Object> slotsForType(Id appointmentTypeId, Date startDate) {
+        // Use the last char of the ID to pick a pattern — purely so callers can see
+        // that passing different appointmentTypeId values produces different output.
+        String idStr = appointmentTypeId != null ? String.valueOf(appointmentTypeId) : '';
+        String bucket = idStr.length() > 0 ? idStr.substring(idStr.length() - 1) : '';
+
+        if (bucket == '0' || bucket == '1' || bucket == '2' || bucket == '3' || bucket == '4') {
+            // Short consultation — more slots per day, narrower window
+            return new List<Object>{
+                new Map<String, Object>{ 'date' => formatDate(startDate.addDays(1)), 'slots' => new List<String>{ '9:00 AM', '9:30 AM', '10:00 AM', '10:30 AM', '11:00 AM' } },
+                new Map<String, Object>{ 'date' => formatDate(startDate.addDays(2)), 'slots' => new List<String>{ '9:00 AM', '9:30 AM', '10:00 AM', '11:30 AM' } },
+                new Map<String, Object>{ 'date' => formatDate(startDate.addDays(3)), 'slots' => new List<String>{ '10:00 AM', '10:30 AM', '11:00 AM' } }
+            };
+        }
+        // Long meeting — fewer slots, longer windows
+        return new List<Object>{
+            new Map<String, Object>{ 'date' => formatDate(startDate.addDays(2)), 'slots' => new List<String>{ '9:00 AM', '1:00 PM' } },
+            new Map<String, Object>{ 'date' => formatDate(startDate.addDays(3)), 'slots' => new List<String>{ '10:00 AM', '2:00 PM' } },
+            new Map<String, Object>{ 'date' => formatDate(startDate.addDays(5)), 'slots' => new List<String>{ '9:30 AM', '2:30 PM' } }
+        };
     }
 
     private static String formatDate(Date d) {
@@ -69,14 +94,11 @@ global inherited sharing class ApptCalendarPicker_0208caProvider {
 
     @JsonAccess(serializable='always' deserializable='always')
     global class Request {
-        @InvocableVariable(label='Title' description='Optional override for the calendar heading.')
-        global String title;
+        @InvocableVariable(label='Contact ID' description='ID of the Contact requesting the appointment. Used to personalize the calendar greeting.')
+        global Id contactId;
 
-        @InvocableVariable(label='Subtitle' description='Optional override for the calendar subtitle.')
-        global String subtitle;
-
-        @InvocableVariable(label='Start Date' description='Optional date to begin availability search from. Defaults to today.')
-        global Date startDate;
+        @InvocableVariable(label='Appointment Type ID' description='ID of the appointment type. Drives which time slots are available.')
+        global Id appointmentTypeId;
     }
 
     @JsonAccess(serializable='always' deserializable='always')
